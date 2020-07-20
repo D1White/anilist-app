@@ -15,7 +15,7 @@ function LeftBar( {lists, onClickItem }) {
     setActiveItem(index);
   };
 
-  let imgName = null;
+
 
   return (
     <div className="leftBar">
@@ -30,7 +30,7 @@ function LeftBar( {lists, onClickItem }) {
               onClick={() => onSelectItem(index)}
               key={`${name}_${index}`}>
                 {name}
-                <img src={imgName} alt="" key={`${name}_img`} />
+
               </li>
               
           ))}

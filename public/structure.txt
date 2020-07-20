@@ -1,0 +1,9 @@
+{
+  GET: user => current(anime id arr)
+  {
+    current [
+      GET: anime => title, img ...,
+      GET: anime => title, img ...,
+    ]
+  }
+}

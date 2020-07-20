@@ -1,0 +1,120 @@
+{
+  "user": [
+    {
+      "id": 0,
+      "avaImageUrl": "",
+      "name": "Makoto Shinkai",
+      "mail": "sanyapig@gmail.com",
+      "current": [
+        {
+          "animeId": 20,
+          "animeImg": "https:\/\/cdn.myanimelist.net\/images\/anime\/1\/20l.jpg",
+          "title": "Naruto",
+          "season": "Summer",
+          "year": 2003
+        },
+        {
+          "animeId": 269,
+          "animeImg": "https://cdn.myanimelist.net//images//anime//3//40451.jpg?s=3aa217eced217b3b4223af21c30fe2ed",
+          "title": "Bleach",
+          "season": "Winter",
+          "year": 2005
+        }
+      ],
+      "planning": [
+        {
+          "animeId": 345,
+          "animeImg": "",
+          "title": "Naruto",
+          "season": "Summer",
+          "year": 2003
+        }
+      ],
+      "completed": [
+        {
+          "animeId": 345,
+          "animeImg": "",
+          "title": "Naruto",
+          "season": "Summer",
+          "year": 2003
+        }
+      ],
+      "paused": [
+        {
+          "animeId": 345,
+          "animeImg": "",
+          "title": "Naruto",
+          "season": "Summer",
+          "year": 2003
+        }
+      ],
+      "dropped": [
+        {
+          "animeId": 345,
+          "animeImg": "",
+          "title": "Naruto",
+          "season": "Summer",
+          "year": 2003
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "avaImageUrl": "",
+      "name": "Garlik",
+      "mail": "sbabadubaba@ukr.net",
+      "current": [
+        {
+          "animeId": 3456,
+          "animeImg": "",
+          "title": "Domekano",
+          "season": "Winter",
+          "year": 2018
+        },
+        {
+          "animeId": 3055,
+          "animeImg": "",
+          "title": "Blitch",
+          "season": "Winter",
+          "year": 2005
+        }
+      ],
+      "planning": [
+        {
+          "animeId": 345,
+          "animeImg": "",
+          "title": "Naruto",
+          "season": "Summer",
+          "year": 2003
+        }
+      ],
+      "completed": [
+        {
+          "animeId": 345,
+          "animeImg": "",
+          "title": "Naruto",
+          "season": "Summer",
+          "year": 2003
+        }
+      ],
+      "paused": [
+        {
+          "animeId": 345,
+          "animeImg": "",
+          "title": "Naruto",
+          "season": "Summer",
+          "year": 2003
+        }
+      ],
+      "dropped": [
+        {
+          "animeId": 345,
+          "animeImg": "",
+          "title": "Naruto",
+          "season": "Summer",
+          "year": 2003
+        }
+      ]
+    }
+  ]
+}

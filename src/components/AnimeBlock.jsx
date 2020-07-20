@@ -1,19 +1,19 @@
 import React from "react";
 
-function AnimeBlock() {
+function AnimeBlock( { animeImg, title, season, year } ) {
   return (
     <div>
       <div className="animeBlock">
         <img
-          src="https://yummyanime.club/img/posters/1570882231.jpg"
+          src={animeImg}
           alt="Anime Picture"
           className="anime__picture"
         />
         <div className="anime__info">
-          <h3 className="anime__title">Haikyuu!!</h3>
+          <h3 className="anime__title">{title}</h3>
           <div className="anime__miniblock">
             <h4 className="anime__subtitle">Season:</h4>
-            <span className="anime__details">Spring 2014</span>
+            <span className="anime__details">{`${season} ${year}`}</span>
           </div>
           <div className="anime__miniblock">
             <h4 className="anime__subtitle">Genre:</h4>

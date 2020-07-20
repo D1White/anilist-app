@@ -1,0 +1,48 @@
+{
+  "user": [
+    {
+      "id": 0,
+      "avaImageUrl": "",
+      "name": "Makoto Shinkai",
+      "mail": "sanyapig@gmail.com",
+      "current": [
+        20,
+        269,
+        3456
+      ],
+      "planning": [
+        
+      ],
+      "completed": [
+        
+      ],
+      "paused": [
+        
+      ],
+      "dropped": [
+        
+      ]
+    },
+    {
+      "id": 1,
+      "avaImageUrl": "",
+      "name": "Garlik",
+      "mail": "sbabadubaba@ukr.net",
+      "current": [
+       
+      ],
+      "planning": [
+       
+      ],
+      "completed": [
+        
+      ],
+      "paused": [
+        
+      ],
+      "dropped": [
+        
+      ]
+    }
+  ]
+}

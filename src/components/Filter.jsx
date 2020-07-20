@@ -1,8 +1,14 @@
 import React from "react";
 
-import arrow from '../assets/img/icons/Arrow.svg';
+import Popup from "./Popup";
 
 function Filter() {
+  const [visibleSeasonPopup, setvisibleSeasonPopup] = React.useState(false);
+
+  const toggleSeasonPopup = () => {
+    setvisibleSeasonPopup(!visibleSeasonPopup);
+  };
+
   return (
     <div className="filter">
       <div className="filter__block">
@@ -14,40 +20,15 @@ function Filter() {
         <input type="text" name="search in list" className="inpYear" />
       </div>
 
-      <div className="season">
-        <span className="filter__title">Season</span>
-        <div className="sortBlock">
-          <div className="filter__popupClose">
-            <span>Any</span>
-            <img src={arrow} alt="" />
-          </div>
-        </div>
-        <div className="filter__popup popupSeason">
-          <ul>
-            <li className="filter__active">Winter</li>
-            <li>Spring</li>
-            <li>Summer</li>
-            <li>Autumn</li>
-          </ul>
-        </div>
-      </div>
+      <Popup
+        title={"Season"}
+        items={["Any", "Winter", "Spring", "Summer", "Autumn"]}
+      />
 
-      <div className="sort">
-        <span className="filter__title">Sort by</span>
-        <div className="sortBlock">
-          <div className="filter__popupClose">
-            <span>Name (a - z)</span>
-            <img src={arrow} alt="" />
-          </div>
-        </div>
-        <div className="filter__popup popupSort">
-          <ul>
-            <li className="filter__active">Name (a - z)</li>
-            <li>Name (z - a)</li>
-            <li>Date added</li>
-          </ul>
-        </div>
-      </div>
+      <Popup
+        title={"Sort by"}
+        items={["Name (a - z)", "Name (z - a)", "Date added"]}
+      />
     </div>
   );
 }

@@ -67,6 +67,7 @@ input {
   cursor: pointer;
 }
 
+
 /* === Container === */
 
 .container {
@@ -75,6 +76,26 @@ input {
   margin: 0 auto;
 }
 
+/*@media (max-width: 1199px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (max-width: 991px) {
+  .container {
+    max-width: 750px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 100%;
+    padding: 0 30px;
+  }
+
+}
+*/
 /* === Header === */
 
 header {
@@ -270,6 +291,10 @@ header {
   padding-top: 5px;
 }
 
+.sort {
+  position: relative;
+}
+
 .filter__popupClose {
 
   width: 160px;
@@ -282,6 +307,8 @@ header {
   justify-content: space-between;
   align-items: center;
 
+  padding-right: 7px;
+
 }
 
 .filter__popupClose>span {
@@ -291,14 +318,15 @@ header {
 }
 
 
-.filter__popupClose>img {
-  padding-right: 9px;
+.rotatedArrow {
+  transform: rotate(180deg);
 }
 
 .filter__popup {
   
-  position: fixed;
+  position: absolute;
   z-index: 9;
+
 
   border-radius: 10px;
   background-color: #555555;
@@ -307,13 +335,10 @@ header {
   display: flex;
   flex-direction: column;
 
-  display: none;
+  
 }
 
-.popupSort {
-  width: 160px;
-  height: 100px;
-}
+
 
 .popupSeason  {
   width: 160px;
@@ -413,4 +438,73 @@ header {
 .anime__description {
   font-size: 15px;
   font-weight: 400;
+}
+
+/* === Start page === */
+
+.start-page {
+  width: 100%;
+  max-width: 1910px;
+  height: auto;
+  background-image: url(assets/img/startPageBg.jpg);
+  background-repeat: no-repeat;
+  background-position: top;
+
+  /* background-color: #222222;*/
+}
+
+.start-page__content {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.start-page__text {
+  width: 420px;
+}
+
+.start-page__text > h1 {
+  font-weight: 900;
+  font-size: 45px;
+  padding-bottom: 35px;
+}
+
+.start-page__text > h3 {
+  font-weight: 500;
+  font-size: 20px;
+  padding-bottom: 35px;
+}
+
+.start-page__button {
+  height: 60px;
+  width: 300px;
+  background-color: #ff6766;
+  border-radius: 30px;
+  border: 1px solid #ff6766;
+  outline: none;
+  cursor: pointer;
+
+  color: #fff;
+  font-weight: 700;
+  font-size: 23px;
+
+  transition: box-shadow 0.3s;
+  transition: opacity 0.3s;
+}
+
+.start-page__button:hover {
+  opacity: 0.9;
+
+  -webkit-box-shadow: 3px 9px 35px 0px rgba(255, 103, 102, 0.5);
+  -moz-box-shadow: 3px 9px 35px 0px rgba(255, 103, 102, 0.5);
+  box-shadow: 3px 9px 35px 0px rgba(255, 103, 102, 0.5);
+}
+
+
+.start-page__img {
+  height: 100%;
+  max-height: 800px;
+  width: auto;
+
+  margin-top: 50px;
 }
