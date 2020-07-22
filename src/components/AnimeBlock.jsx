@@ -6,7 +6,7 @@ function AnimeBlock( { animeImg, title, season, year } ) {
       <div className="animeBlock">
         <img
           src={animeImg}
-          alt="Anime Picture"
+          alt="Anime cover"
           className="anime__picture"
         />
         <div className="anime__info">
