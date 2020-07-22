@@ -4,13 +4,21 @@ const initialState = {
 };
 
 const user = (state = initialState, action) => {
-  if (action.type === 'SET_USER') {
-    return {
-      ...state,
-      items: action.payload,
-    };
+  switch (action.type) {
+    case "SET_USER":
+      return {
+        ...state,
+        items: action.payload,
+        isLoaded: true,
+      };
+    case "SET_LOADED":
+      return {
+        ...state,
+        isLoaded: action.payload,
+      };
+    default:
+      return state;
   }
-  return state;
 };
 
 export default user;

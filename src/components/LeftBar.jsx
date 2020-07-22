@@ -8,13 +8,7 @@ import CompletedIco from "../assets/img/icons/CompletedIco.svg";
 import DroppedIco from "../assets/img/icons/DroppedIco.svg";*/
 import logOutIco from "../assets/img/icons/LogOutIco.svg";
 
-const LeftBar = React.memo(function LeftBar( { lists, onClickItem, avaImageUrl, name, mail } ) {
-  const [activeItem, setActiveItem] = React.useState(0);
-
-  const onSelectItem = (index) => {
-    setActiveItem(index);
-    onClickItem(index);
-  };
+const LeftBar = React.memo(function LeftBar( { activeList ,lists, onClickList, avaImageUrl, name, mail } ) {
 
   return (
     <div className="leftBar">
@@ -26,9 +20,9 @@ const LeftBar = React.memo(function LeftBar( { lists, onClickItem, avaImageUrl, 
           lists.map((name, index) => (
             <li
               className={`liLink ${
-                activeItem === index ? "liLink_active" : ""
+                activeList === index ? "liLink_active" : ""
               }`}
-              onClick={() => onSelectItem(index)}
+              onClick={() => onClickList(index)}
               key={`${name}_${index}`}
             >
               {name}

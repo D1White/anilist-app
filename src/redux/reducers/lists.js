@@ -6,7 +6,7 @@ const lists = (state = initialState, action) => {
   if (action.type === 'SET_LIST') {
     return {
       ...state,
-      items: action.payload,
+      list: action.payload,
     };
   }
   return state;
