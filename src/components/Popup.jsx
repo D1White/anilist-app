@@ -2,11 +2,15 @@ import React from "react";
 
 import arrow from "../assets/img/icons/Arrow.svg";
 
-function Popup({ title, items }) {
+const Popup = React.memo(function Popup({
+  title,
+  items,
+  activeSortType,
+  onClickSortType,
+}) {
   const [visiblePopup, setVisiblePopup] = React.useState(false);
-  const [activeItem, setActiveItem] = React.useState(0);
   const sortRef = React.useRef();
-  const activeLabel = items[activeItem].name;
+  const activeLabel = items.find((obj) => obj.type === activeSortType).name;
 
   const toggleVisiblePopup = () => {
     setVisiblePopup(!visiblePopup);
@@ -19,7 +23,9 @@ function Popup({ title, items }) {
   };
 
   const onSelectItem = (index) => {
-    setActiveItem(index);
+    if (onClickSortType) {
+      onClickSortType(index);
+    }
     setVisiblePopup(false);
   };
 
@@ -33,7 +39,11 @@ function Popup({ title, items }) {
       <div onClick={toggleVisiblePopup} className="sortBlock">
         <div className="filter__popupClose">
           <span>{activeLabel}</span>
-          <img className={visiblePopup ? "rotatedArrow" : ""} src={arrow} alt="" />
+          <img
+            className={visiblePopup ? "rotatedArrow" : ""}
+            src={arrow}
+            alt=""
+          />
         </div>
       </div>
       {visiblePopup && (
@@ -42,8 +52,10 @@ function Popup({ title, items }) {
             {items &&
               items.map((obj, index) => (
                 <li
-                  className={activeItem === index ? "filter__active" : ""}
-                  onClick={() => onSelectItem(index)}
+                  onClick={() => onSelectItem(obj.type)}
+                  className={
+                    activeSortType === obj.type ? "filter__active" : ""
+                  }
                   key={`${obj.type}_${index}`}
                 >
                   {obj.name}
@@ -54,6 +66,7 @@ function Popup({ title, items }) {
       )}
     </div>
   );
-}
+});
+
 
 export default Popup;

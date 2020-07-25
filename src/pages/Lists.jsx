@@ -5,6 +5,7 @@ import { Filter, AnimeBlock, LeftBar, AnimeLoadingBlock } from "../components";
 
 import { setLists } from "../redux/actions/lists";
 import { fetchUser } from "../redux/actions/user";
+import { fetchAnime } from "../redux/actions/anime";
 
 const listsNames = ["Current", "Planning", "Completed", "Paused", "Dropped"];
 
@@ -12,11 +13,17 @@ function Lists() {
   const dispatch = useDispatch();
   const user = useSelector(({ user }) => user.items);
   const isLoaded = useSelector(({ user }) => user.isLoaded);
+
+  const anime = useSelector(({ anime }) => anime.items);
+  const animeIsLoaded = useSelector(({ anime }) => anime.isLoaded);
+
   const list = useSelector(({ lists }) => lists.list);
+  const sortBy = useSelector(({ filters }) => filters.sortBy);
 
   React.useEffect(() => {
-    dispatch(fetchUser());
-  }, [list]);
+    dispatch(fetchUser(list, sortBy));
+    dispatch(fetchAnime(list, sortBy))
+  }, [list, sortBy]);
 
   const onSelectList = React.useCallback(
     (index) => {
@@ -33,15 +40,16 @@ function Lists() {
             activeList={list}
             onClickList={onSelectList}
             lists={listsNames}
+            isLoading={true}
             {...user}
           />
           <div className="listBlock">
             <Filter />
-            {isLoaded
-              ? user.current.map((obj) => (
+            {animeIsLoaded
+              ? anime.map((obj) => (
                   <AnimeBlock
                     key={`${obj.animeId}_${obj.title}`}
-                    isLoading={true}
+                    animeIsLoaded={true}
                     {...obj}
                   />
                 ))

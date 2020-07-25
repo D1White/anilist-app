@@ -129,9 +129,6 @@ header {
   margin-right: 80px;
 }
 
-
-
-
 .inpSearch{
 
   width: 241px;
@@ -144,6 +141,35 @@ header {
   background-position: 5% center;
   border-radius: 50px;
 
+}
+
+.search-popup {
+  position: absolute;
+  z-index: 10;
+
+  border-radius: 30px;
+  background-color: #555555;
+  margin-top: 10px;
+
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  display: none;
+}
+
+.search-popup>li {
+  font-weight: 400;
+  font-size: 17px;
+  cursor: pointer;
+  padding: 7px;
+
+}
+
+.search-popup>li:hover {
+  color: #FF6766;
 }
 
 .minAva {
@@ -403,10 +429,52 @@ header {
   justify-content: space-between;
 }
 
+.anime-block:hover {
+  background-color: #555555;
+  border-radius: 20px;
+}
+
 .anime__picture {
   width: 20%;
   height: 20%;
   border-radius: 13px;
+}
+
+.animeBlock-movie {
+  position: absolute;
+  width: 160px;
+  height: 225px;
+
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.animeBlock-movie-active {
+  display: flex;
+}
+
+
+.animeBlock-movie>li {
+  width: 165px;
+  height: 40px;
+
+  background-color: #333333;
+  border-radius: 13px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-weight: 700;
+  font-size: 21px;
+
+  cursor: pointer;
+}
+
+.animeBlock-movie>li:hover {
+  background-color: #454545;
 }
 
 .anime__info {

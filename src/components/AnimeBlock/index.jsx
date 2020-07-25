@@ -9,6 +9,13 @@ function AnimeBlock( { animeImg, title, season, year } ) {
           alt="Anime cover"
           className="anime__picture"
         />
+        <ul className="animeBlock-movie">
+                <li>Planning</li>
+                <li>Completed</li>
+                <li>Paused</li>
+                <li>Dropped</li>
+                <li>Delete</li>
+              </ul>
         <div className="anime__info">
           <h3 className="anime__title">{title}</h3>
           <div className="anime__miniblock">

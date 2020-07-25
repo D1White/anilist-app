@@ -27,6 +27,12 @@ function Header() {
                 placeholder="Search anime"
                 className="inpSearch"
               />
+              <ul className="search-popup">
+                <li>Naruto</li>
+                <li>Naruto: Shipuden</li>
+                <li>Is It Wrong to Try to Pick Up Girls in a Dungeon?</li>
+                <li>Naruto: Shipuden</li>
+              </ul>
             </div>
             <Link to="/">
               <div className="link">

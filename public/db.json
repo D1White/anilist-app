@@ -116,5 +116,30 @@
         }
       ]
     }
+  ],
+  "0": [
+    {
+      "animeId": 20,
+      "animeImg": "https://cdn.myanimelist.net/images/anime/1/20l.jpg",
+      "title": "Naruto",
+      "season": "Summer",
+      "year": 2003
+    },
+    {
+      "animeId": 269,
+      "animeImg": "https://cdn.myanimelist.net//images//anime//3//40451.jpg?s=3aa217eced217b3b4223af21c30fe2ed",
+      "title": "Bleach",
+      "season": "Winter",
+      "year": 2005
+    }
+  ],
+  "1" : [
+    {
+      "animeId": 20,
+      "animeImg": "https://cdn.myanimelist.net/images/anime/1/20l.jpg",
+      "title": "Naruto",
+      "season": "Summer",
+      "year": 2003
+    }
   ]
 }

@@ -7,11 +7,9 @@ export const setLoaded = (payload) => ({
   payload,
 });
 
-
-
-export const fetchUser = () => (dispatch) => {
+export const fetchUser = (list, sortBy) => (dispatch) => {
   dispatch(setLoaded(false));
-  axios.get("http://localhost:3001/user").then(({ data }) => {
+  axios.get(`http://localhost:3001/user`).then(({ data }) => {
     dispatch(setUser(data[activeUser]));
   });
 };

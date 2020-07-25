@@ -1,16 +1,24 @@
 const initialState = {
-  anime: [],
+  items: [],
   isLoaded: false,
 };
 
 const anime = (state = initialState, action) => {
-  if (action.type === 'SET_ANIME') {
-    return {
-      ...state,
-      items: action.payload,
-    };
+  switch (action.type) {
+    case "SET_ANIME":
+      return {
+        ...state,
+        items: action.payload,
+        isLoaded: true,
+      };
+    case "SET_LOADED_ANIME":
+      return {
+        ...state,
+        isLoaded: action.payload,
+      };
+    default:
+      return state;
   }
-  return state;
 };
 
 export default anime;
