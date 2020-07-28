@@ -1,15 +1,34 @@
 import React from "react";
 
-function AnimeBlock( { animeImg, title, season, year } ) {
+function AnimeBlock( { poster, names, season, genres, description } ) {
+
+  const [visibleSubmenu, setVisibleSubmenu] = React.useState(false);
+  const aniblockRef = React.useRef();
+  const toggleVisibleSubmenu = () => {
+    setVisibleSubmenu(!visibleSubmenu);
+  };
+
+  const handleOutsideClick = (e) => {
+    if (!e.path.includes(aniblockRef.current)) {
+      setVisibleSubmenu(false);
+    }
+  };
+
+  React.useEffect(() => {
+    document.body.addEventListener("click", handleOutsideClick);
+  }, []);
+
   return (
     <div>
       <div className="animeBlock">
         <img
-          src={animeImg}
+          ref={aniblockRef}
+          onClick={toggleVisibleSubmenu}
+          src={`https://www.anilibria.tv/${poster.url}`}
           alt="Anime cover"
           className="anime__picture"
         />
-        <ul className="animeBlock-movie">
+        <ul className={`animeBlock-movie ${visibleSubmenu ? "animeBlock-movie-active" : ""}`}>
                 <li>Planning</li>
                 <li>Completed</li>
                 <li>Paused</li>
@@ -17,24 +36,19 @@ function AnimeBlock( { animeImg, title, season, year } ) {
                 <li>Delete</li>
               </ul>
         <div className="anime__info">
-          <h3 className="anime__title">{title}</h3>
+        <h3 className="anime__title">{names.ru}</h3>
           <div className="anime__miniblock">
             <h4 className="anime__subtitle">Season:</h4>
-            <span className="anime__details">{`${season} ${year}`}</span>
+            <span className="anime__details">{`${season.season_string} ${season.year}`}</span>
           </div>
           <div className="anime__miniblock">
             <h4 className="anime__subtitle">Genre:</h4>
             <span className="anime__details">
-              Shonen, Drama, Comedy, Sports, School Life
+              {genres.join(', ')}
             </span>
           </div>
           <span className="anime__description">
-            Inspired after watching a volleyball ace nicknamed "Little Giant" in
-            action, smallStatured Shouyou Hinata revives the volleyball club at
-            his middle school. The newly-formed team even makes it to a
-            tournament; however, their first match turns out to be their last
-            when they are brutally squashed by the "King of the Court," Tobio
-            Kageyama.
+            {description}
           </span>
         </div>
       </div>

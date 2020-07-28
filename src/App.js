@@ -6,7 +6,7 @@ import { Lists, Main } from "./pages";
 import { Route } from "react-router-dom";
 
 function App() {
-  // const activeUser = 0;
+
 
   return (
     <div>

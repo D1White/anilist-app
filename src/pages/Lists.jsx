@@ -22,15 +22,12 @@ function Lists() {
 
   React.useEffect(() => {
     dispatch(fetchUser(list, sortBy));
-    dispatch(fetchAnime(list, sortBy))
+    dispatch(fetchAnime(list, sortBy));
   }, [list, sortBy]);
 
-  const onSelectList = React.useCallback(
-    (index) => {
-      dispatch(setLists(index));
-    },
-    []
-  );
+  const onSelectList = React.useCallback((index) => {
+    dispatch(setLists(index));
+  }, []);
 
   return (
     <div className="main">
@@ -40,20 +37,21 @@ function Lists() {
             activeList={list}
             onClickList={onSelectList}
             lists={listsNames}
-            isLoading={true}
+            isLoaded={true}
             {...user}
           />
           <div className="listBlock">
             <Filter />
             {animeIsLoaded
               ? anime.map((obj) => (
+                
                   <AnimeBlock
-                    key={`${obj.animeId}_${obj.title}`}
+                    key={obj.code}
                     animeIsLoaded={true}
                     {...obj}
                   />
                 ))
-              : Array(2)
+              : Array(3)
                   .fill(0)
                   .map((_, index) => <AnimeLoadingBlock key={index} />)}
           </div>

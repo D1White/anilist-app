@@ -429,7 +429,7 @@ header {
   justify-content: space-between;
 }
 
-.anime-block:hover {
+.animeBlock:hover {
   background-color: #555555;
   border-radius: 20px;
 }
