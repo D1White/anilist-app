@@ -16,7 +16,7 @@ const Popup = React.memo(function Popup({
     setVisiblePopup(!visiblePopup);
   };
 
-  const handleOutsideClick = (e) => {
+  const handleOutsideClick = (e) => { 
     if (!e.path.includes(sortRef.current)) {
       setVisiblePopup(false);
     }

@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Search } from "./";
+
 import logoSvg from "../assets/img/AL_logo.svg";
 import ava from "../assets/img/zero_two.jpg";
 
@@ -20,20 +22,7 @@ function Header() {
           </Link>
 
           <div className="header__block">
-            <div className="search">
-              <input
-                type="text"
-                name="search"
-                placeholder="Search anime"
-                className="inpSearch"
-              />
-              <ul className="search-popup">
-                <li>Naruto</li>
-                <li>Naruto: Shipuden</li>
-                <li>Is It Wrong to Try to Pick Up Girls in a Dungeon?</li>
-                <li>Naruto: Shipuden</li>
-              </ul>
-            </div>
+            <Search />
             <Link to="/">
               <div className="link">
                 <img src={ava} alt="avatar" className="minAva" />

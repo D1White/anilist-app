@@ -152,12 +152,16 @@ header {
   margin-top: 10px;
 
 
-  display: flex;
+  
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
 
   display: none;
+}
+
+.search-popup-active {
+  display: flex;
 }
 
 .search-popup>li {
