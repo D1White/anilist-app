@@ -1,8 +1,12 @@
 import React from "react";
 
+import { getUser } from "../../api/api";
+
 function AnimeBlock( { poster, names, season, genres, description } ) {
 
   const [visibleSubmenu, setVisibleSubmenu] = React.useState(false);
+  const [animeUser, setAnimeUser] = React.useState([]);
+
   const aniblockRef = React.useRef();
   const toggleVisibleSubmenu = () => {
     setVisibleSubmenu(!visibleSubmenu);
@@ -17,6 +21,11 @@ function AnimeBlock( { poster, names, season, genres, description } ) {
   React.useEffect(() => {
     document.body.addEventListener("click", handleOutsideClick);
   }, []);
+
+  /*React.useEffect(() => {
+    getUser().then(setAnimeUser);
+    console.log(animeUser);
+  }, []);*/
 
   return (
     <div>

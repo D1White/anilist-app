@@ -2,9 +2,18 @@ import React from "react";
 
 import axios from "axios";
 
+import { addAnime } from "../api/api";
+
+import { fetchAnime } from "../redux/actions/anime";
+import { useDispatch } from "react-redux";
+
+
 function Search() {
   const [searchValue, setSearchValue] = React.useState("");
   const [searchArr, setSearchArr] = React.useState([]);
+  const [animeChangedId, setanimeChangedId] = React.useState(null);
+
+  const dispatch = useDispatch();
 
   React.useEffect(() => {
     axios
@@ -13,6 +22,21 @@ function Search() {
         setSearchArr(data);
       });
   }, [searchValue]);
+
+
+  React.useEffect(() => {
+    if (animeChangedId) {
+      addAnime("0", "0", animeChangedId);
+      console.log(animeChangedId);
+      setTimeout(() => {
+        console.log('Time');
+        dispatch(fetchAnime(0, 0));
+      }, 100);
+      
+      
+    }
+  }, [animeChangedId]);
+
 
   return (
     <div className="search">
@@ -32,7 +56,14 @@ function Search() {
         }
       >
         {searchArr.map((obj) => (
-          <li key={obj.id}>{obj.names.en}</li>
+          <li
+            key={obj.id}
+            onClick={ () => {
+              setanimeChangedId(obj.id);
+              setSearchValue("");
+            }}>
+            {obj.names.en}
+          </li>
         ))}
       </ul>
     </div>

@@ -7,6 +7,7 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
+    "firebase": "^7.17.1",
     "react": "^16.13.1",
     "react-content-loader": "^5.1.0",
     "react-dom": "^16.13.1",
@@ -21,8 +22,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "npx json-server --watch public/db.json --port=3001"
-    
+    "server": "npx json-server --watch public/db.json --port=3001",
+    "deploy": "firebase deplou"
   },
   "eslintConfig": {
     "extends": "react-app"
