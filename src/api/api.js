@@ -43,6 +43,15 @@ export function addAnime(userId, listIndex, newValue) {
   })
 }
 
+/*export function addAnime(userId, listIndex, newValue) {
+  db.collection("users").doc(userId).onSnapshot((doc) => {
+    //console.log(doc, " data: ", doc.data());
+    const userArr = doc.data();
+    userArr[listIndex].push(newValue);
+   // return db.collection("users").doc(userId).set(userArr);
+  })
+}*/
+
 export function deleteAnime() {
   
 }

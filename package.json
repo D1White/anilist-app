@@ -23,7 +23,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "server": "npx json-server --watch public/db.json --port=3001",
-    "deploy": "firebase deplou"
+    "deploy": "firebase deploy"
   },
   "eslintConfig": {
     "extends": "react-app"
