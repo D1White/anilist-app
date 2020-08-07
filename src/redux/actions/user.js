@@ -1,8 +1,8 @@
-import axios from "axios";
+//import axios from "axios";
 
 import { getUser } from "../../api/api";
 
-const activeUser = 0;
+//const activeUser = 0;
 
 export const setLoaded = (payload) => ({
   type: "SET_LOADED",

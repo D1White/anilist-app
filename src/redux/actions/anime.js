@@ -12,10 +12,7 @@ export const fetchAnime = (list, sortBy) => (dispatch) => {
   let oldAnime = [];
 
   dispatch(setLoadedAnime(false));
-  console.log("I this");
   getUser().then(data => {
-
-    console.log(data);
    
     oldAnime = data[list];
 

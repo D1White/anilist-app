@@ -2,19 +2,28 @@ import React from "react";
 
 import axios from "axios";
 
+import { useDispatch } from "react-redux";
+
 import { addAnime, getUser } from "../api/api";
 
 import { fetchAnime } from "../redux/actions/anime";
-import { useDispatch } from "react-redux";
+
+import {setAnimePage, setAnimePageDisplaed } from '../redux/actions/animePage'
+
 
 
 function Search() {
+  const dispatch = useDispatch();
   const [searchValue, setSearchValue] = React.useState("");
   const [searchArr, setSearchArr] = React.useState([]);
   const [animeChangedId, setanimeChangedId] = React.useState(null);
   const [animeList, setAnimeList] = React.useState({});
 
-  const dispatch = useDispatch();
+  /*const animePage = useSelector(({ animePage }) => animePage);*/
+
+  
+
+  
 
   React.useEffect(() => {
     axios
@@ -28,14 +37,13 @@ function Search() {
 
   React.useEffect(() => {
     if (animeChangedId) {
-      addAnime("0", "0", animeChangedId);
+     /* addAnime("0", "0", animeChangedId);
       console.log(animeChangedId);
-      /*setTimeout(() => {
-        dispatch(fetchAnime(0, 0));
-      }, 100);*/
-      getUser().then(setAnimeList);
-
+      getUser().then(setAnimeList);*/
+      dispatch(setAnimePage(animeChangedId));
+      dispatch(setAnimePageDisplaed(true));
       
+
     }
   }, [animeChangedId]);
 

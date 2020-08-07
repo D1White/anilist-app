@@ -20,6 +20,10 @@ function Lists() {
   const list = useSelector(({ lists }) => lists.list);
   const sortBy = useSelector(({ filters }) => filters.sortBy);
 
+  
+
+
+
   React.useEffect(() => {
     dispatch(fetchUser(list, sortBy));
     dispatch(fetchAnime(list, sortBy));
@@ -30,6 +34,7 @@ function Lists() {
   }, []);
 
   return (
+
     <div className="main">
       <div className="container">
         <div className="mainBlocks">
@@ -58,6 +63,7 @@ function Lists() {
         </div>
       </div>
     </div>
+  
   );
 }
 
