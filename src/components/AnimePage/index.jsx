@@ -6,7 +6,7 @@ import axios from "axios";
 import { AnimeLoadingPage } from "../index";
 import { setAnimePageDisplaed } from "../../redux/actions/animePage";
 
-import { getUser, transferAnime } from "../../api/api";
+import { getUser, transferAnime, addAnime } from "../../api/api";
 
 import delIco from "../../assets/img/icons/trashAlt.svg";
 
@@ -14,6 +14,7 @@ function AnimePage() {
   const dispatch = useDispatch();
 
   const animePage = useSelector(({ animePage }) => animePage);
+  const onList = useSelector(({ lists }) => lists.list);
   const [animeInfo, setAnimeInfo] = React.useState({});
 
   const listsNames = ["Current", "Planning", "Completed", "Paused", "Dropped"];
@@ -38,14 +39,7 @@ function AnimePage() {
       });
 
     getUser().then(setAnimeList);
-    /*for (const key in animeList) {
-        if (Array.isArray(animeList[key])) {
-          if (animeList[key].indexOf(animeInfo.id) >= 0) {
-            setActiveList(key);
-          }
-        }
-      }
-      setIsLoad(true);*/
+
   }, []);
 
   React.useEffect(() => {
@@ -60,6 +54,18 @@ function AnimePage() {
       //!Object.keys(animeInfo).length == 0 (для проверки ниже)
     }
   }, [animeList]);
+
+  const listButton = (index) => {
+    console.log("index" ,index);
+    onSelectList(index);
+
+    if (activeList === -1) {
+      addAnime(index, animeInfo.id, onList);
+    }else{
+      transferAnime(animeInfo.id, +activeList, index);
+    }
+
+  }
 
   return (
     <div className="popup-blackout"> 
@@ -102,7 +108,7 @@ function AnimePage() {
                       className={`list__button ${
                         +activeList === index ? "list__button-active" : ""
                       }`}
-                      onClick={() => {onSelectList(index); transferAnime(animeInfo.id, +activeList, index)}}
+                      onClick={() => listButton(index)}
                       key={`${name}_${index}`}
                     >
                       {name}

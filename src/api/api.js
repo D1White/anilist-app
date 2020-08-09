@@ -39,11 +39,12 @@ export function createUser(userId) {
   return db.collection("users").doc(userId).set({ dataTemplate });
 }
 
-export function addAnime(userId, listIndex, newValue) {
-  db.collection("users").doc(userId).get().then(doc => {
+export function addAnime(listIndex, newValue, activeList) {
+  db.collection("users").doc('0').get().then(doc => {
     const userArr = doc.data();
     userArr[listIndex].push(newValue);
-    return db.collection("users").doc(userId).set(userArr);
+    db.collection("users").doc('0').set(userArr);
+    store.dispatch(fetchAnime(activeList, 0));
   })
 }
 
