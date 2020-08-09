@@ -11,6 +11,27 @@ function AnimeBlock( { poster, names, season, genres, description, id } ) {
     dispatch(setAnimePageDisplaed(true));
   }
 
+  const descrLength = () => {
+    let desc = description;
+    if (desc.length > 350) {
+      /*desc = desc.slice(0, 350);
+      desc = desc + '...';*/
+      desc = desc.split(' ');
+      desc.length = 61;
+      desc = desc.join(' ')
+      desc = desc + '...';
+      return desc;
+    }
+    return description;
+  }
+
+  const seasonCheck = () => {
+   if (season.season_string === null || season.season_string === "вечный") {
+     return '';
+   }
+   return season.season_string;
+  }
+
   return (
     <div>
       <div className="animeBlock" onClick={selectAnime}>
@@ -23,7 +44,7 @@ function AnimeBlock( { poster, names, season, genres, description, id } ) {
         <h3 className="anime__title">{names.ru}</h3>
           <div className="anime__miniblock">
             <h4 className="anime__subtitle">Season:</h4>
-            <span className="anime__details">{`${season.season_string} ${season.year}`}</span>
+            <span className="anime__details">{`${seasonCheck()} ${season.year}`}</span>
           </div>
           <div className="anime__miniblock">
             <h4 className="anime__subtitle">Genre:</h4>
@@ -32,7 +53,7 @@ function AnimeBlock( { poster, names, season, genres, description, id } ) {
             </span>
           </div>
           <span className="anime__description">
-            {description}
+            {descrLength()}
           </span>
         </div>
       </div>

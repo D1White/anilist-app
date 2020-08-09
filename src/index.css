@@ -701,3 +701,24 @@ z-index: 100;
 .list__button-active {
   background-color: #222222;
 }
+
+.list__button-del {
+  background-color: #333333;
+  width: 90px;
+  border-radius: 30px;
+  border: 5px solid #222222;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  transition: background-color 0.3s;
+}
+
+.list__button-del:hover {
+  background-color: #222222;
+}
+
+.del-button {
+  width: 30%;
+  height: auto;
+}

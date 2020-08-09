@@ -1,5 +1,9 @@
 import { db } from "../firebase";
 
+import store from '../redux/store';
+import { fetchAnime } from "../redux/actions/anime";
+
+
 /*export function get(collection) {
   return db
     .collection(collection)
@@ -52,11 +56,22 @@ export function addAnime(userId, listIndex, newValue) {
   })
 }*/
 
+
+export function transferAnime(animeId, oldList, newList) {
+  
+  db.collection("users").doc('0').get().then(doc => {
+    const userArr = doc.data();
+    userArr[oldList] = userArr[oldList].filter(e => e !== animeId);
+    userArr[newList].push(animeId);
+    db.collection("users").doc('0').set(userArr);
+    store.dispatch(fetchAnime(oldList, 0));
+  })
+
+}
+
 export function deleteAnime() {
   
 }
-
-
 
 export function getUser(activeUser) {
   const docRef = db.collection("users").doc("0");
