@@ -17,7 +17,7 @@ function AnimeBlock( { poster, names, season, genres, description, id } ) {
       /*desc = desc.slice(0, 350);
       desc = desc + '...';*/
       desc = desc.split(' ');
-      desc.length = 61;
+      desc.length = 57;
       desc = desc.join(' ')
       desc = desc + '...';
       return desc;

@@ -46,7 +46,7 @@ function Lists() {
             {...user}
           />
           <div className="listBlock">
-            <Filter />
+          <Filter />
             {animeIsLoaded
               ? anime.map((obj) => (
                 

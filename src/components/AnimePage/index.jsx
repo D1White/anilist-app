@@ -6,7 +6,7 @@ import axios from "axios";
 import { AnimeLoadingPage } from "../index";
 import { setAnimePageDisplaed } from "../../redux/actions/animePage";
 
-import { getUser, transferAnime, addAnime } from "../../api/api";
+import { getUser, transferAnime, addAnime, deleteAnime } from "../../api/api";
 
 import delIco from "../../assets/img/icons/trashAlt.svg";
 
@@ -114,7 +114,7 @@ function AnimePage() {
                       {name}
                     </li>
                   ))}
-                <li className="list__button-del"><img className="del-button" src={delIco} alt="delete icon"/></li>
+                <li className="list__button-del"><img className="del-button" onClick={() => deleteAnime(animeInfo.id, +activeList)} src={delIco} alt="delete icon"/></li>
               </ul>
             </div>
           ) : (

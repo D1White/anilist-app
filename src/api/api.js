@@ -70,8 +70,13 @@ export function transferAnime(animeId, oldList, newList) {
 
 }
 
-export function deleteAnime() {
-  
+export function deleteAnime(animeId, oldList) {
+  db.collection("users").doc('0').get().then(doc => {
+    const userArr = doc.data();
+    userArr[oldList] = userArr[oldList].filter(e => e !== animeId);
+    db.collection("users").doc('0').set(userArr);
+    store.dispatch(fetchAnime(oldList, 0));
+  })
 }
 
 export function getUser(activeUser) {
