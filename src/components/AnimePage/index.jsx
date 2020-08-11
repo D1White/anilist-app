@@ -71,7 +71,7 @@ function AnimePage() {
     <div className="popup-blackout"> 
       <div className="container">
         <div className="anime-popup">
-          <span className="anime-popup__close" onClick={HideBlock}>
+          <span className="popup__close anime-page__close" onClick={HideBlock}>
             &times;
           </span>
           {!Object.keys(animeInfo).length == 0 && isLoad ? (

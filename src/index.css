@@ -581,10 +581,10 @@ header {
   right: 0;
   background: rgba(0, 0, 0, 0.7);
   transition: opacity 500ms;
-z-index: 100;
+  z-index: 100;
   display: flex;
   align-items: center;
-
+  justify-content: center;
 }
 
 .anime-popup {
@@ -623,7 +623,7 @@ z-index: 100;
   padding-bottom: 21px;
 }
 
-.anime-popup__close {
+.popup__close {
   position: absolute;
   top: 20px;
   right: 30px;
@@ -638,9 +638,14 @@ z-index: 100;
   transition-property: transform;
 }
 
-.anime-popup__close:hover {
+.popup__close:hover {
   transform: rotate(180deg);
     -webkit-transform: rotate(180deg);
+}
+
+.anime-page__close {
+  top: 20px;
+  right: 30px;
 }
 
 .anime-popup__miniblock {
@@ -721,4 +726,100 @@ z-index: 100;
 .del-button {
   width: 30%;
   height: auto;
+}
+
+/* === Authentication  popup === */
+
+.auth__popup {
+  background-color: #333333;
+  border-radius: 25px;
+  
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.auth__popup>h1 {
+  font-size: 50px;
+  font-weight: 700;
+  margin: 23px 0 17px 0;
+}
+
+.auth__popup>hr {
+  width: 500px;
+  margin: 0 28px 0 28px;
+}
+
+.auth-ways {
+  padding: 50px 0 50px 0;
+}
+
+.auth__buttnon {
+  width: 445px;
+  height: 70px;
+  background-color: #222222;
+  border-radius: 30px;
+  margin-bottom: 30px;
+
+  cursor: pointer;
+  transition: background-color 0.5s;
+}
+
+
+.auth__button-transition {
+  width: 80px;
+  height: 70px;
+  background-color: #555555;
+  border-radius: 30px;
+  
+
+  transition: width 0.8s;
+}
+
+.button-content {
+  display: flex;
+  align-items: center;
+  position: absolute;
+}
+
+.button-content:hover + .auth__button-transition {
+
+  -o-transform: translateX(1px);
+  -ms-transform: translateX(1px);
+  -moz-transform: translateX(1px);
+  -webkit-transform: translateX(1px);
+  transform: translateX(1px);
+  width: 445px;
+}
+
+.under-logo {
+  width: 80px;
+  height: 70px;
+  background-color: #555555;
+  border-radius: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.auth__buttnon-logo {
+    width: 39px;
+    height: auto;
+    z-index: 1;
+}
+
+.auth__buttnon-text {
+  font-size: 23px;
+  font-weight: 500;
+  margin-left: 55px;
+  z-index: 1;
+}
+
+.auth__close {
+  top: 0px;
+  right: 30px;
 }
