@@ -12,6 +12,8 @@ import {setAnimePage, setAnimePageDisplaed } from '../redux/actions/animePage'
 
 
 
+
+
 function Search() {
   const dispatch = useDispatch();
   const [searchValue, setSearchValue] = React.useState("");

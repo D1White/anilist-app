@@ -1,12 +1,12 @@
-import { db } from "../firebase";
+import { db, auth } from "../firebase";
 
 import store from '../redux/store';
 import { fetchAnime } from "../redux/actions/anime";
 
 
-/*export function get(collection) {
+/*export function get() {
   return db
-    .collection(collection)
+    .collection('users')
     .get()
     .then((snapshot) => {
       const items = snapshot.docs.map((doc) => ({
@@ -15,11 +15,22 @@ import { fetchAnime } from "../redux/actions/anime";
       }));
       return items;
     });
-}
+}*/
 
-*/
+let aUID = '';
 
-const dataTemplate = {
+
+auth.onAuthStateChanged((user) => {
+
+  if (user) {
+    aUID = user.uid;
+  }
+
+})
+
+
+
+/*const dataTemplate = {
   "user": 
     {
       "id": "",
@@ -33,54 +44,65 @@ const dataTemplate = {
   "2": [],
   "3": [],
   "4": []
-}
+}*/
 
 export function createUser(userId) {
-  return db.collection("users").doc(userId).set({ dataTemplate });
+  return db.collection("users").doc(aUID).set({
+    "userInfo": 
+      {
+        "id": `${auth.currentUser.uid}`,
+        "avaImageUrl": `${auth.currentUser.photoURL}`,
+        "name": `${auth.currentUser.displayName}`,
+        "mail": `${auth.currentUser.email}`,
+      }
+    ,
+    "0": [],
+    "1": [],
+    "2": [],
+    "3": [],
+    "4": [],
+  });
 }
 
 export function addAnime(listIndex, newValue, activeList) {
-  db.collection("users").doc('0').get().then(doc => {
+
+  db.collection("users").doc(aUID).get().then(doc => {
     const userArr = doc.data();
     userArr[listIndex].push(newValue);
-    db.collection("users").doc('0').set(userArr);
+    db.collection("users").doc(aUID).set(userArr);
     store.dispatch(fetchAnime(activeList, 0));
   })
 }
 
-/*export function addAnime(userId, listIndex, newValue) {
-  db.collection("users").doc(userId).onSnapshot((doc) => {
-    //console.log(doc, " data: ", doc.data());
-    const userArr = doc.data();
-    userArr[listIndex].push(newValue);
-   // return db.collection("users").doc(userId).set(userArr);
-  })
-}*/
+
 
 
 export function transferAnime(animeId, oldList, newList) {
   
-  db.collection("users").doc('0').get().then(doc => {
+  db.collection("users").doc(aUID).get().then(doc => {
     const userArr = doc.data();
     userArr[oldList] = userArr[oldList].filter(e => e !== animeId);
     userArr[newList].push(animeId);
-    db.collection("users").doc('0').set(userArr);
+    db.collection("users").doc(aUID).set(userArr);
     store.dispatch(fetchAnime(oldList, 0));
   })
 
 }
 
 export function deleteAnime(animeId, oldList) {
-  db.collection("users").doc('0').get().then(doc => {
+  console.log(aUID);
+  db.collection("users").doc(aUID).get().then(doc => {
     const userArr = doc.data();
     userArr[oldList] = userArr[oldList].filter(e => e !== animeId);
-    db.collection("users").doc('0').set(userArr);
+    db.collection("users").doc(aUID).set(userArr);
     store.dispatch(fetchAnime(oldList, 0));
   })
 }
 
 export function getUser(activeUser) {
-  const docRef = db.collection("users").doc("0");
+  
+  if (aUID) {
+    const docRef = db.collection("users").doc(aUID);
   return docRef
     .get()
     .then(function (doc) {
@@ -89,15 +111,22 @@ export function getUser(activeUser) {
     .catch(function (error) {
       console.log("Error getting document:", error);
     });
+  }
 }
 
-/*function mapSnapshot(snapshot) {
-  return snapshot.docs.map(mapDoc);
+export function getAllUsers() {
+  const tempDoc = [];
+  return db
+  .collection('users')
+  .get()
+  .then((snapshot) => {
+    snapshot.docs.map((doc) => {
+      tempDoc.push(doc.id);
+    });
+    return tempDoc;
+  });
+
 }
 
-function mapDoc(doc) {
-  return {
-    id: doc.id,
-    ...doc.data(),
-  };
-}*/
+
+

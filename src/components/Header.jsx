@@ -12,7 +12,7 @@ function Header() {
     <header>
       <div className="container">
         <div className="header">
-          <Link to="/main">
+          <Link to="/">
             <div className="header__block">
               <div className="link">
                 <img src={logoSvg} alt="logo" />
@@ -23,7 +23,7 @@ function Header() {
 
           <div className="header__block">
             <Search />
-            <Link to="/">
+            <Link to="/lists">
               <div className="link">
                 <img src={ava} alt="avatar" className="minAva" />
               </div>

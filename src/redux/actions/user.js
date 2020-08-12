@@ -2,6 +2,8 @@
 
 import { getUser } from "../../api/api";
 
+import { auth } from "../../firebase";
+
 //const activeUser = 0;
 
 export const setLoaded = (payload) => ({
@@ -12,9 +14,16 @@ export const setLoaded = (payload) => ({
 export const fetchUser = (list, sortBy) => (dispatch) => {
   dispatch(setLoaded(false));
 
-  getUser().then(data => {
-    dispatch(setUser(data.userInfo));
-  });
+  auth.onAuthStateChanged((user) =>{
+
+    if (user) {
+      getUser().then(data => {
+      
+        dispatch(setUser(data.userInfo));
+      });
+    }
+
+  })
 
   /*axios.get(`http://localhost:3001/user`).then(({ data }) => {
     dispatch(setUser(data[activeUser]));

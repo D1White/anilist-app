@@ -1,5 +1,8 @@
 import React from "react";
 
+import { auth } from '../firebase';
+import { Redirect } from "react-router-dom";
+
 import { SignInPopup } from "../components";
 
 import ZeroTwo from "../assets/img/zeroTwoMin.png";
@@ -11,7 +14,7 @@ function Main() {
   const [signInVisible, setSignInVisible] = React.useState(false);
 
   const displaySignInPopup = () => {
-    setSignInVisible(true)
+      setSignInVisible(true); 
   }
 
   const closeSignInPopup = () => {
@@ -20,6 +23,7 @@ function Main() {
 
   return (
     <div className="start-page">
+      {signInVisible && auth.currentUser && <Redirect to={"/lists"} />}
       {signInVisible && <SignInPopup onClickClosePopup={closeSignInPopup} />}
       <div className="container">
         <div className="start-page__content">

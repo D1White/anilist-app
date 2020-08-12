@@ -10,6 +10,7 @@ import { getUser, transferAnime, addAnime, deleteAnime } from "../../api/api";
 
 import delIco from "../../assets/img/icons/trashAlt.svg";
 
+
 function AnimePage() {
   const dispatch = useDispatch();
 
@@ -22,6 +23,8 @@ function AnimePage() {
 
   const [animeList, setAnimeList] = React.useState({});
   const [isLoad, setIsLoad] = React.useState(false);
+
+  const userId = useSelector(({ user }) => user.items.id);
 
   const onSelectList = React.useCallback((index) => {
     setActiveList(index);
@@ -38,7 +41,7 @@ function AnimePage() {
         setAnimeInfo(data);
       });
 
-    getUser().then(setAnimeList);
+    getUser(userId).then(setAnimeList);
 
   }, []);
 
@@ -56,7 +59,7 @@ function AnimePage() {
   }, [animeList]);
 
   const listButton = (index) => {
-    console.log("index" ,index);
+
     onSelectList(index);
 
     if (activeList === -1) {
@@ -104,6 +107,7 @@ function AnimePage() {
               <ul className="anime-popup__list">
                 {listsNames &&
                   listsNames.map((name, index) => (
+                    
                     <li
                       className={`list__button ${
                         +activeList === index ? "list__button-active" : ""

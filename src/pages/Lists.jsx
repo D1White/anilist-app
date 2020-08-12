@@ -7,7 +7,11 @@ import { setLists } from "../redux/actions/lists";
 import { fetchUser } from "../redux/actions/user";
 import { fetchAnime } from "../redux/actions/anime";
 
+import { auth } from '../firebase';
+
 const listsNames = ["Current", "Planning", "Completed", "Paused", "Dropped"];
+
+
 
 function Lists() {
   const dispatch = useDispatch();
@@ -19,8 +23,6 @@ function Lists() {
 
   const list = useSelector(({ lists }) => lists.list);
   const sortBy = useSelector(({ filters }) => filters.sortBy);
-
-  
 
 
 
