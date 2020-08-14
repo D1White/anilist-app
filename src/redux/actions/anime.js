@@ -1,11 +1,9 @@
 
-import axios from "axios";
-
 import { getUser } from "../../api/api";
 
 import { auth } from "../../firebase";
 
-
+const jikanjs  = require('jikanjs');
 
 export const setLoadedAnime = (payload) => ({
   type: "SET_LOADED_ANIME",
@@ -32,9 +30,8 @@ export const fetchAnime = (list, sortBy) => (dispatch) => {
 
        if (oldAnime.length > 0) {
         oldAnime.map((obj) => {
-          axios
-            .get(`https://api.anilibria.tv/v2/getTitle?id=${obj}`)
-            .then(({ data }) => {
+          jikanjs.loadAnime(obj)
+            .then( (data) => {
               arr.push(data);
               
               if (oldAnime.length === arr.length) {

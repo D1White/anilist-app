@@ -1,7 +1,5 @@
 import React from "react";
 
-import axios from "axios";
-
 import { useDispatch } from "react-redux";
 
 import { addAnime, getUser } from "../api/api";
@@ -10,6 +8,7 @@ import { fetchAnime } from "../redux/actions/anime";
 
 import {setAnimePage, setAnimePageDisplaed } from '../redux/actions/animePage'
 
+import jikanjs from 'jikanjs'
 
 
 
@@ -28,11 +27,15 @@ function Search() {
   
 
   React.useEffect(() => {
-    axios
-      .get(`https://api.anilibria.tv/v2/searchTitles?search=${searchValue}`)
-      .then(({ data }) => {
-        setSearchArr(data);
+    if (searchValue.length > 2) {
+      jikanjs.search('anime', searchValue)
+      .then(( data ) => {
+        if (data.results.length > 5) {
+          data.results.length = 5;
+        }
+        setSearchArr(data.results);
       });
+    }
   }, [searchValue]);
 
 
@@ -69,19 +72,19 @@ function Search() {
       />
       <ul
         className={
-          searchValue.length <= 2
+          searchValue.length < 3
             ? "search-popup"
             : "search-popup search-popup-active"
         }
       >
         {searchArr.map((obj) => (
           <li
-            key={obj.id}
+            key={obj.mal_id}
             onClick={ () => {
-              setanimeChangedId(obj.id);
+              setanimeChangedId(obj.mal_id);
               setSearchValue("");
             }}>
-            {obj.names.en}
+            {obj.title}
           </li>
         ))}
       </ul>

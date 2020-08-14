@@ -1,7 +1,9 @@
 import React from "react";
 
 import { useSelector, useDispatch } from "react-redux";
+
 import axios from "axios";
+import jikanjs from 'jikanjs'
 
 import { AnimeLoadingPage } from "../index";
 import { setAnimePageDisplaed } from "../../redux/actions/animePage";
@@ -36,9 +38,8 @@ function AnimePage() {
   };
 
   React.useEffect(() => {
-    axios
-      .get(`https://api.anilibria.tv/v2/getTitle?id=${animePage.animeId}`)
-      .then(({ data }) => {
+    jikanjs.loadAnime(animePage.animeId)
+      .then( (data) => {
         setAnimeInfo(data);
       });
 
@@ -54,7 +55,7 @@ function AnimePage() {
   React.useEffect(() => {
     for (const key in animeList) {
       if (Array.isArray(animeList[key])) {
-        if (animeList[key].indexOf(animeInfo.id) >= 0) {
+        if (animeList[key].indexOf(animeInfo.mal_id) >= 0) {
           setActiveList(key);
         }
       }
@@ -68,11 +69,22 @@ function AnimePage() {
     onSelectList(index);
 
     if (activeList === -1) {
-      addAnime(index, animeInfo.id, onList);
+      addAnime(index, animeInfo.mal_id, onList);
     } else {
-      transferAnime(animeInfo.id, +activeList, index);
+      transferAnime(animeInfo.mal_id, +activeList, index);
     }
   };
+
+  const genresFormation = () => {
+    const genresArr = [];
+
+    animeInfo.genres.map((obj) => {
+      genresArr.push(obj.name)
+    })
+
+    return genresArr.join(', ')
+  }
+
 
   return (
     <div className="popup-blackout">
@@ -85,25 +97,25 @@ function AnimePage() {
             <div>
               <div className="anime-popup__content">
                 <img
-                  src={`https://www.anilibria.tv${animeInfo.poster.url}`}
+                  src={animeInfo.image_url}
                   className="anime-popup__picture"
                   alt="Anime cover"
                 />
                 <div className="anime-popup__text">
-                  <h1>{animeInfo.names.ru}</h1>
+                  <h1>{animeInfo.title}</h1>
 
                   <div className="anime-popup__miniblock">
                     <h4 className="anime-popup__subtitle">Season:</h4>
-                    <span className="anime-popup__details">{`${animeInfo.season.season_string} ${animeInfo.season.year}`}</span>
+                    <span className="anime-popup__details">{animeInfo.aired.string}</span>
                   </div>
                   <div className="anime-popup__miniblock">
                     <h4 className="anime-popup__subtitle">Genre:</h4>
                     <span className="anime-popup__details">
-                      {animeInfo.genres.join(", ")}
+                      {genresFormation()}
                     </span>
                   </div>
                   <span className="anime-popup__description">
-                    {animeInfo.description}
+                    {animeInfo.synopsis}
                   </span>
                 </div>
               </div>
@@ -127,7 +139,7 @@ function AnimePage() {
                     <li className="list__button-del">
                       <img
                         className="del-button"
-                        onClick={() => deleteAnime(animeInfo.id, +activeList)}
+                        onClick={() => deleteAnime(animeInfo.mal_id, +activeList)}
                         src={delIco}
                         alt="delete icon"
                       />

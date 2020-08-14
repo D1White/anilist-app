@@ -53,7 +53,7 @@ function Lists() {
               ? anime.map((obj) => (
                 
                   <AnimeBlock
-                    key={obj.code}
+                    key={obj.mal_id}
                     animeIsLoaded={true}
                     {...obj}
                   />
