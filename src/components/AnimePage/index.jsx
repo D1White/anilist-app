@@ -8,8 +8,9 @@ import { setAnimePageDisplaed } from "../../redux/actions/animePage";
 
 import { getUser, transferAnime, addAnime, deleteAnime } from "../../api/api";
 
-import delIco from "../../assets/img/icons/trashAlt.svg";
+import { auth } from "../../firebase";
 
+import delIco from "../../assets/img/icons/trashAlt.svg";
 
 function AnimePage() {
   const dispatch = useDispatch();
@@ -41,8 +42,13 @@ function AnimePage() {
         setAnimeInfo(data);
       });
 
-    getUser(userId).then(setAnimeList);
+      if (userId) {
+        getUser(userId).then(setAnimeList);
+      }else {
+        setIsLoad(true);
+      }
 
+    
   }, []);
 
   React.useEffect(() => {
@@ -50,7 +56,7 @@ function AnimePage() {
       if (Array.isArray(animeList[key])) {
         if (animeList[key].indexOf(animeInfo.id) >= 0) {
           setActiveList(key);
-        }  
+        }
       }
       setIsLoad(true);
 
@@ -59,19 +65,17 @@ function AnimePage() {
   }, [animeList]);
 
   const listButton = (index) => {
-
     onSelectList(index);
 
     if (activeList === -1) {
       addAnime(index, animeInfo.id, onList);
-    }else{
+    } else {
       transferAnime(animeInfo.id, +activeList, index);
     }
-
-  }
+  };
 
   return (
-    <div className="popup-blackout"> 
+    <div className="popup-blackout">
       <div className="container">
         <div className="anime-popup">
           <span className="popup__close anime-page__close" onClick={HideBlock}>
@@ -103,23 +107,34 @@ function AnimePage() {
                   </span>
                 </div>
               </div>
-              <hr />
-              <ul className="anime-popup__list">
-                {listsNames &&
-                  listsNames.map((name, index) => (
-                    
-                    <li
-                      className={`list__button ${
-                        +activeList === index ? "list__button-active" : ""
-                      }`}
-                      onClick={() => listButton(index)}
-                      key={`${name}_${index}`}
-                    >
-                      {name}
+
+              {auth.currentUser && (
+                <div>
+                  <hr />
+                  <ul className="anime-popup__list">
+                    {listsNames &&
+                      listsNames.map((name, index) => (
+                        <li
+                          className={`list__button ${
+                            +activeList === index ? "list__button-active" : ""
+                          }`}
+                          onClick={() => listButton(index)}
+                          key={`${name}_${index}`}
+                        >
+                          {name}
+                        </li>
+                      ))}
+                    <li className="list__button-del">
+                      <img
+                        className="del-button"
+                        onClick={() => deleteAnime(animeInfo.id, +activeList)}
+                        src={delIco}
+                        alt="delete icon"
+                      />
                     </li>
-                  ))}
-                <li className="list__button-del"><img className="del-button" onClick={() => deleteAnime(animeInfo.id, +activeList)} src={delIco} alt="delete icon"/></li>
-              </ul>
+                  </ul>
+                </div>
+              )}
             </div>
           ) : (
             <AnimeLoadingPage />

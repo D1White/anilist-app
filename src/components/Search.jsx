@@ -44,6 +44,7 @@ function Search() {
       getUser().then(setAnimeList);*/
       dispatch(setAnimePage(animeChangedId));
       dispatch(setAnimePageDisplaed(true));
+      setanimeChangedId(null);
       
 
     }

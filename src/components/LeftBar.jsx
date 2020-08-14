@@ -26,7 +26,7 @@ const LeftBar = React.memo(function LeftBar( { activeList ,lists, onClickList, a
     <div className="leftBar">
       {signedOut  && <Redirect to={"/"} />}
       <img src={avaImageUrl ? avaImageUrl : ava} alt="avatar" className="leftBar__avatar" />
-      <span className="userName">{name === null ? name : 'Anime Lover'}</span>
+      <span className="userName">{name === 'null' ? 'Anime Lover' : name}</span>
       <span className="userMail">{mail}</span>
       <ul className="listNav">
         {lists &&

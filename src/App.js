@@ -9,14 +9,21 @@ import { Route } from "react-router-dom";
 import PrivateRoute from "./auth/PrivateRoute";
 import { AuthProvider } from "./auth/Auth";
 
+import { auth } from "./firebase"
+
 function App() {
+
   const animePageDisplayed = useSelector(({ animePage }) => animePage.isDisplayed);
+
+
   return (
     <div>
       <Header />
       <AuthProvider>
       
-        {animePageDisplayed && <AnimePage/>}
+        {  animePageDisplayed && <AnimePage/> }
+          
+        
         <Route path="/" component={Main} exact />
         <PrivateRoute path="/lists" component={Lists} exact />
 
