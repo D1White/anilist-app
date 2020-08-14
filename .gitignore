@@ -24,6 +24,7 @@ yarn-error.log*
 
 /public/problems.md
 
+# firestore
 storage.rules
 firestore.rules
 
