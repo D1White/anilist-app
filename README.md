@@ -1,7 +1,6 @@
 # AniList ⛩
 Create and save anime lists with a simple app
 
----
 
 ## Demo
 
@@ -19,7 +18,6 @@ Create and save anime lists with a simple app
 
 </details>
 
----
 
 ## Features:
 
@@ -29,7 +27,6 @@ Create and save anime lists with a simple app
 * Anime search
 * View anime information
 
----
 
 ## Tech Stack and Tools:
 
@@ -50,7 +47,6 @@ Create and save anime lists with a simple app
   -->
 </div>
 
----
 
 ### API:
 Anime information obtained thanks to [AniLibria API](https://github.com/T1MOXA/docs/blob/master/api_v2.md) (outdated), [Jikan API](https://jikan.moe/). For convenience, [JikanJS](https://github.com/zuritor/jikanjs) was used.
