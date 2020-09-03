@@ -41,6 +41,7 @@ Create and save anime lists with a simple app
   <img align="left" alt="CSS3" width="26px" src="https://cdn.svgporn.com/logos/apiary.svg" />
   <img align="left" alt="CSS3" width="26px" src="https://cdn.svgporn.com/logos/git-icon.svg" />
   <img align="left" alt="CSS3" width="26px" src="https://cdn.svgporn.com/logos/github-icon.svg" />
+<br />
 </div>
 
 
