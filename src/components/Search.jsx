@@ -69,6 +69,7 @@ function Search() {
         name="search"
         placeholder="Search anime"
         className="inpSearch"
+        autocomplete="off"
       />
       <ul
         className={
